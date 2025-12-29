@@ -1,0 +1,53 @@
+# Monorepo Taskfile (cross-platform)
+version: '3'
+
+tasks:
+
+  dev:app-file-controller:
+    desc: 'app-file-controller 개발 모드 실행'
+    dir: apps/app-file-controller
+    cmds:
+      - wails dev
+
+  dev:app-decg-link:
+    desc: 'app-decg-link 개발 모드 실행'
+    dir: apps/app-decg-link
+    cmds:
+      - wails dev
+
+  dev:all:
+    desc: '모든 앱 동시 개발 실행'
+    cmds:
+      - task -d apps/app-file-controller dev &
+      - task -d apps/app-decg-link dev &
+      - wait
+
+  build:app-file-controller:win:
+    desc: 'app-file-controller Windows 빌드'
+    dir: apps/app-file-controller
+    cmds:
+      - wails build -platform windows/amd64 -o ../../dist/app-file-controller/app-file-controller.exe
+
+  build:app-decg-link:win:
+    desc: 'app-decg-link Windows 빌드'
+    dir: apps/app-decg-link
+    cmds:
+      - wails build -platform windows/amd64 -o ../../dist/app-decg-link/app-decg-link.exe
+
+  build:all:win:
+    desc: '모든 앱 Windows 빌드'
+    cmds:
+      - task build:app-file-controller:win
+      - task build:app-decg-link:win
+
+  lint:go:
+    desc: 'Go 린트'
+    cmds:
+      - golangci-lint run ./...
+
+  test:go:
+    desc: 'Go 테스트'
+    cmds:
+      - go test ./...
+
+# 프론트엔드 lint/test는 각 앱 frontend에서 실행 (추후 확장)

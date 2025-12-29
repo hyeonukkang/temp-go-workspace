@@ -1,0 +1,13 @@
+go 1.23.0
+
+// Go workspace file for monorepo
+use ./apps/app-file-controller
+
+use ./apps/app-decg-link
+
+use ./packages/domain
+
+use ./packages/utils
+
+use ./packages/ui-antd
+

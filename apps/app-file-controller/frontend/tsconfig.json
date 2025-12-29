@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ESNext" /* ECMAScript 대상 버전 지정: 'ES3'(기본값), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018' 또는 'ESNEXT'. */,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ] /* 컴파일에 포함할 라이브러리 파일을 지정합니다. */,
+    "jsx": "react-jsx" /* JSX 코드 생성 지정: 'preserve', 'react-native' 또는 'react'. */,
+    "useDefineForClassFields": true /* ECMAScript 표준 준수 클래스 필드를 내보냅니다. */,
+    "experimentalDecorators": true /* ES7 데코레이터에 대한 실험 지원을 활성화합니다. */,
+    "emitDecoratorMetadata": true /* 데코레이터의 방출 유형 메타데이터에 대한 실험적 지원을 제공합니다. */,
+    /* Modules */
+    "module": "ESNext" /* 모듈 코드 생성 지정: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015' 또는 'ESNext'. */,
+    "resolveJsonModule": true /* json 모듈을 해결합니다. */,
+    "moduleResolution": "Node" /* 'node'(Node.js) 또는 'classic'(TypeScript 1.6 이전)과 같이 모듈 확인 전략을 지정합니다. */,
+    /* JavaScript Support */
+    "allowJs": false /* 자바스크립트 파일이 컴파일되도록 허용합니다. */,
+    /* Interop 제약 조건 */
+    "isolatedModules": true /* 다른 가져오기에 의존하지 않고 각 파일을 안전하게 변환할 수 있는지 확인합니다. */,
+    "allowSyntheticDefaultImports": true /* 모듈에 기본 내보내기가 없는 경우 'y에서 x 가져오기'를 허용합니다. */,
+    "esModuleInterop": true /* CommonJS 모듈 가져오기 지원을 용이하게 하기 위해 추가 JavaScript를 발행합니다. 이것은 타입의 호환성을 위해서 `allowSyntheticDefaultImports`를 유효하게 합니다. */,
+    "forceConsistentCasingInFileNames": true /* 가져오기에서 대소문자가 올바른지 확인합니다. */,
+    /* Type Checking */
+    "strict": true /* 모든 엄격한 유형 검사 옵션을 활성화합니다. */,
+    "noImplicitAny": true /* 묵시적인 `any` 유형의 표현식 및 선언에 대한 오류 보고를 활성화합니다. */,
+    "strictFunctionTypes": true /* 함수를 할당할 때 매개변수와 반환 값이 하위 유형과 호환되는지 확인합니다. */,
+    "noUnusedLocals": true /* 사용하지 않는 지역 변수에 대한 오류를 보고합니다. */,
+    "noImplicitReturns": true /* 가져오기에 결과가 없을 때 오류를 보고합니다. */,
+    /* Emit */
+    "noEmit": true /* 컴파일에서 파일 내보내기를 비활성화합니다. */,
+    "declaration": false /* 해당하는 '.d.ts' 파일을 생성합니다. */,
+    "declarationMap": false /* d.ts 파일에 대한 소스맵을 생성합니다. */,
+    "sourceMap": false /* 해당 '.map' 파일을 생성합니다. */,
+    "downlevelIteration": true /* 'ES5' 또는 'ES3'을 대상으로 할 때 'for-of' , 'spread' 및 'destructuring'의 반복 가능한 항목을 완벽하게 지원합니다. */,
+    /* 완성도 */
+    "skipLibCheck": true /* 모든 .d.ts 파일을 검사하는 유형을 건너뜁니다. */
+  },
+  "ts-node": {
+    // Tell ts-node CLI to install the --loader automatically, explained below
+    "esm": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist/*",
+    "build/*",
+    "coverage/*",
+    ".vscode/*",
+    ".github/*",
+    "storybook-static/*",
+    "scripts/*",
+    "static/*",
+    "__tests__/*",
+    "__mocks__/*",
+    "/.*/"
+  ]
+}

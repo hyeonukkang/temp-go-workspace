@@ -21,27 +21,27 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
-       // API 서버 시작
-       go func() {
-	       http.HandleFunc("/api/fileinfo", func(w http.ResponseWriter, r *http.Request) {
-		       if r.Method != http.MethodPost {
-			       http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
-			       return
-		       }
-		       var req struct {
-			       Name string `json:"name"`
-		       }
-		       if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-			       http.Error(w, "Bad Request", http.StatusBadRequest)
-			       return
-		       }
-		       result := InsertFileInfo(a.ctx, req.Name)
-		       w.Header().Set("Content-Type", "application/json")
-		       json.NewEncoder(w).Encode(map[string]string{"result": result})
-	       })
-	       log.Println("API 서버 시작: :8080")
-	       log.Fatal(http.ListenAndServe(":8080", nil))
-       }()
+	// API 서버 시작
+	go func() {
+		http.HandleFunc("/api/fileinfo", func(w http.ResponseWriter, r *http.Request) {
+			if r.Method != http.MethodPost {
+				http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+				return
+			}
+			var req struct {
+				Name string `json:"name"`
+			}
+			if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+				http.Error(w, "Bad Request", http.StatusBadRequest)
+				return
+			}
+			result := InsertFileInfo(a.ctx, req.Name)
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(map[string]string{"result": result})
+		})
+		log.Println("API 서버 시작: :8080")
+		log.Fatal(http.ListenAndServe(":8080", nil))
+	}()
 }
 
 // Greet returns a greeting for the given name

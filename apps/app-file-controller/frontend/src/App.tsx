@@ -6,7 +6,9 @@ import {Greet, PostgresTestQuery} from "../wailsjs/go/main/App";
 import { Button } from '@vuno/ui-antd';
 
 function App() {
-    const [resultText, setResultText] = useState("Please enter your name below 👇");
+    const [resultText, setResultText] = useState(
+      "Please enter your name below!!"
+    )
     const [name, setName] = useState('');
     const updateName = (e: any) => setName(e.target.value);
     const updateResultText = (result: string) => setResultText(result);

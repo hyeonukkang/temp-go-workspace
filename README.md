@@ -61,5 +61,19 @@
 
 3. 두 앱을 동시에 실행하려면 위 명령을 각각 터미널에서 실행하거나, 백그라운드(&)로 실행
 
+4. 하나의 앱을 두 번 실행하려면
+	 - 동일한 실행 파일을 두 번 실행하면 됩니다.
+	 - 예시 (macOS):
+		 ```bash
+		 ./apps/app-file-controller/build/bin/app-file-controller.app/Contents/MacOS/app-file-controller &
+		 ./apps/app-file-controller/build/bin/app-file-controller.app/Contents/MacOS/app-file-controller &
+		 ```
+	 - 예시 (Windows):
+		 ```cmd
+		 start .\apps\app-file-controller\build\bin\app-file-controller.exe
+		 start .\apps\app-file-controller\build\bin\app-file-controller.exe
+		 ```
+	 - 단, 앱 내부에서 멀티 인스턴스 실행을 막는 로직이 있다면 한 번만 실행될 수 있습니다.
+
 ---
 자세한 내용은 각 디렉터리/설정 파일 참고

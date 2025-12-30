@@ -74,6 +74,11 @@
 		 start .\apps\app-file-controller\build\bin\app-file-controller.exe
 		 ```
 	 - 단, 앱 내부에서 멀티 인스턴스 실행을 막는 로직이 있다면 한 번만 실행될 수 있습니다.
+	 - 혹은 포트를 쓴다면 분리해서 실행합니다.
+        ```bash
+        PORT=8080 ./app-decg-link &
+        PORT=8081 ./app-decg-link &
+        ```
 
 ---
 자세한 내용은 각 디렉터리/설정 파일 참고

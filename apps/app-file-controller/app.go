@@ -32,7 +32,7 @@ func (a *App) startup(ctx context.Context) {
 	go func() {
 		port := os.Getenv("PORT")
 		if port == "" {
-			port = "8080"
+			port = "5001"
 		}
 		http.HandleFunc("/api/fileinfo", func(w http.ResponseWriter, r *http.Request) {
 			if r.Method != http.MethodPost {

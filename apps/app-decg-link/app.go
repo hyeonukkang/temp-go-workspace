@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 )
 
 // App struct
@@ -23,6 +24,10 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 	// API 서버 시작
 	go func() {
+		port := os.Getenv("PORT")
+		if port == "" {
+			port = "8080"
+		}
 		http.HandleFunc("/api/fileinfo", func(w http.ResponseWriter, r *http.Request) {
 			if r.Method != http.MethodPost {
 				http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
@@ -39,8 +44,8 @@ func (a *App) startup(ctx context.Context) {
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(map[string]string{"result": result})
 		})
-		log.Println("API 서버 시작: :8080")
-		log.Fatal(http.ListenAndServe(":8080", nil))
+		log.Println("API 서버 시작:", ":"+port)
+		log.Fatal(http.ListenAndServe(":"+port, nil))
 	}()
 }
 

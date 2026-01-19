@@ -11,11 +11,11 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-func main() {
-	// Create an instance of the app structure
-	app := NewApp()
 
-	// Create application with options
+func main() {
+	app := NewApp()
+	// uuid 예제는 app.go에서 실행
+
 	err := wails.Run(&options.App{
 		Title:  "app-decg-link",
 		Width:  1024,

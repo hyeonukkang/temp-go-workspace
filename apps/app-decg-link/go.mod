@@ -1,17 +1,19 @@
 module app-decg-link
 
-go 1.23.0
+go 1.24.0
 
 require (
+	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.7.6
+	github.com/samber/lo v1.49.1
 	github.com/wailsapp/wails/v2 v2.11.0
+	monorepo/packages/logger v0.0.0-00010101000000-000000000000
 )
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
@@ -27,7 +29,6 @@ require (
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/samber/lo v1.49.1 // indirect
 	github.com/tkrajina/go-reflector v0.5.8 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
@@ -39,4 +40,6 @@ require (
 	golang.org/x/text v0.24.0 // indirect
 )
 
-// replace github.com/wailsapp/wails/v2 v2.11.0 => /Users/vuno/go/pkg/mod
+replace monorepo/packages/utils => ../../packages/utils
+
+replace monorepo/packages/logger => ../../packages/logger

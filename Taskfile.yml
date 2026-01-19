@@ -9,9 +9,16 @@ tasks:
     cmds:
       - wails dev
 
+
   dev:app-decg-link:
     desc: 'app-decg-link 개발 모드 실행'
     dir: apps/app-decg-link
+    cmds:
+      - wails dev
+
+  dev:folder-watcher:
+    desc: 'folder-watcher 개발 모드 실행'
+    dir: apps/folder-watcher
     cmds:
       - wails dev
 
@@ -20,6 +27,7 @@ tasks:
     cmds:
       - task -d apps/app-file-controller dev &
       - task -d apps/app-decg-link dev &
+      - task -d apps/folder-watcher dev &
       - wait
 
   build:app-file-controller:win:
@@ -28,17 +36,25 @@ tasks:
     cmds:
       - wails build -platform windows/amd64 -o ../../dist/app-file-controller/app-file-controller.exe
 
+
   build:app-decg-link:win:
     desc: 'app-decg-link Windows 빌드'
     dir: apps/app-decg-link
     cmds:
       - wails build -platform windows/amd64 -o ../../dist/app-decg-link/app-decg-link.exe
 
+  build:folder-watcher:win:
+    desc: 'folder-watcher Windows 빌드'
+    dir: apps/folder-watcher
+    cmds:
+      - wails build -platform windows/amd64 -o ../../dist/folder-watcher/folder-watcher.exe
+
   build:all:win:
     desc: '모든 앱 Windows 빌드'
     cmds:
       - task build:app-file-controller:win
       - task build:app-decg-link:win
+      - task build:folder-watcher:win
 
   lint:go:
     desc: 'Go 린트'

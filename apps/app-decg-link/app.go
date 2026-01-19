@@ -3,9 +3,13 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"log"
 	"net/http"
 	"os"
+
+	"monorepo/packages/logger"
+
+	"github.com/google/uuid"
+	"github.com/samber/lo"
 )
 
 // App struct
@@ -22,6 +26,16 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+
+
+	u := uuid.New()
+	logger.Info("uuid.New() result:", u)
+
+	// samber/lo v1.49.1 사용 예제
+	nums := []int{1, 2, 3}
+	hasTwo := lo.Contains(nums, 2)
+	logger.Info("lo.Contains(nums, 2):", hasTwo)
+
 	// API 서버 시작
 	go func() {
 		port := os.Getenv("PORT")
@@ -44,8 +58,9 @@ func (a *App) startup(ctx context.Context) {
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(map[string]string{"result": result})
 		})
-		log.Println("API 서버 시작:", ":"+port)
-		log.Fatal(http.ListenAndServe(":"+port, nil))
+		logger.Info("API 서버 시작:", ":"+port)
+		err := http.ListenAndServe(":"+port, nil)
+		logger.Error("API 서버 종료:", err)
 	}()
 }
 
@@ -66,5 +81,5 @@ func (a *App) GetFileInfoTable() []map[string]interface{} {
 
 // LogButtonClick: 버튼 클릭 로그 기록
 func (a *App) LogButtonClick() {
-	log.Println("button click")
+	logger.Info("button click")
 }
